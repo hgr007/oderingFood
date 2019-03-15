@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header class="navbar navbar-expand-lg navbar-light bg-light">
-      <a href>
+      <a href="#">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -25,26 +25,14 @@
       </a>
       <a href="#" class="navbar navbar-brand">pizza点餐系统</a>
       <ul class="navbar-nav">
-        <router-link to="/">
-          <li class="nav-link">主页</li>
-        </router-link>
-        <router-link to="/menu">
-          <li class="nav-link">菜单</li>
-        </router-link>
-        <router-link to="/admin">
-          <li class="nav-link">管理</li>
-        </router-link>
-        <router-link to="/about">
-          <li class="nav-link">关于我们</li>
-        </router-link>
+        <router-link tag="a" to="/" class="nav-link">主页</router-link>
+        <router-link tag="a" to="/menu" class="nav-link">菜单</router-link>
+        <router-link to="/admin" class="nav-link" tag="a">管理</router-link>
+        <router-link to="/about" class="nav-link" tag="a">关于我们</router-link>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <router-link to="/login">
-          <li class="nav-link">登陆</li>
-        </router-link>
-        <router-link to="register">
-          <li class="nav-link">注册</li>
-        </router-link>
+        <router-link to="/login" class="nav-link" tag="a">登陆</router-link>
+        <router-link to="register" class="nav-link" tag="a">注册</router-link>
       </ul>
     </Header>
     <router-view></router-view>
