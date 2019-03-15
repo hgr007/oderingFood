@@ -14,7 +14,7 @@ export default new Router({
     {
       path: '/menu',
       name: 'menu',  
-      component: () => import(/* webpackChunkName: "about" */ './components/Menu.vue')
+      component: () => import('./components/Menu.vue')
     },
     {
       path: '/admin',
