@@ -19,22 +19,22 @@ export default new Router({
     {
       path: '/admin',
       name: 'admin',  
-      component: () => import(/* webpackChunkName: "about" */ './components/Admin.vue')
+      component: () => import( './components/Admin.vue')
     },
     {
       path: '/about',
       name: 'about',  
-      component: () => import(/* webpackChunkName: "about" */ './components/About.vue')
+      component: () => import('./components/About.vue')
     },
     {
       path: '/login',
       name: 'login',  
-      component: () => import(/* webpackChunkName: "about" */ './components/Login.vue')
+      component: () => import('./components/Login.vue')
     },
     {
       path: '/register',
       name: 'register',  
-      component: () => import(/* webpackChunkName: "about" */ './components/Register.vue')
+      component: () => import( './components/Register.vue')
     },
   ]
 })

@@ -1,5 +1,14 @@
 <template>
     <div>
-        <h1>这是主页</h1>
+        <button @click="Gotomenu" class="btn btn-success">去点餐</button>
     </div>
 </template>
+<script>
+export default {
+    methods: {
+         Gotomenu(){
+             this.$router.push('./menu')
+        }
+    },
+}
+</script>
