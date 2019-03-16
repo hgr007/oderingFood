@@ -1,10 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// 一级路由
 import Home from './components/Home.vue'
-import About from './components/About'
-// 二级路由
-import Contact from './components/about/Contact'
+
 
 Vue.use(Router)
 
