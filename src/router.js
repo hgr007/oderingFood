@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+// 一级路由
 import Home from './components/Home.vue'
+import About from './components/About'
+// 二级路由
+import Contact from './components/about/Contact'
 
 Vue.use(Router)
 
@@ -24,7 +28,28 @@ export default new Router({
     {
       path: '/about',
       name: 'about',  
-      component: () => import('./components/About.vue')
+      component: () => import('./components/About.vue'),children:[
+        {
+          path:'./components/about/Contact.vue',
+          name:'contact',
+          component:() =>import('./components/about/Contact.vue')
+        },
+        {
+          path:'./components/about/Delivery.vue',
+          name:'delivery',
+          component:() =>import('./components/about/Delivery.vue')
+        },
+        {
+          path:'./components/about/History.vue',
+          name:'history',
+          component:() =>import('./components/about/History.vue')
+        },
+        {
+          path:'./components/about/OderingGuide.vue',
+          name:'oderingGuide',
+          component:() =>import('./components/about/OderingGuide.vue')
+        },
+      ]
     },
     {
       path: '/login',
