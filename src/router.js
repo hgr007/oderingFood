@@ -15,13 +15,13 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      components:{
-         default:Home,
-         'history':History,
-         'delivery':Delivery,
-         'oderingGuide':OderingGuide
+      components: {
+        default: Home,
+        'history': History,
+        'delivery': Delivery,
+        'oderingGuide': OderingGuide
 
-        }
+      }
     },
     {
       path: '/menu',
@@ -31,7 +31,23 @@ export default new Router({
     {
       path: '/admin',
       name: 'admin',
-      component: () => import('./components/Admin.vue')
+      component: () => import('./components/Admin.vue'),
+      // beforeEnter: (to, from, next) => {
+        // ...路由独享守卫 在进入之前提示
+        // alert("没有登陆！！")
+        // next(false); 不登录
+        //判断store.gettes.isLogin === false
+
+
+      //   if (to.path == '/login' || to.path == '/register') {
+      //     next();
+      //   }
+      //   else {
+      //     alert("请登录")
+      //     next('/login')
+      //   }
+
+      // }
     },
     // 二级路由
     {

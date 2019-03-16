@@ -30,9 +30,3 @@ new Vue({
 //   alert("后置钩子");
 // })
 
-// 路由独享守卫
-
-beforeEnter: (to, from, next) => {
-  // ...
-}
-

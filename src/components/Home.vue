@@ -1,6 +1,7 @@
 <template>
   <div>
-    <button @click="Gotomenu" class="btn btn-success">去点餐</button>
+    <h1>HOME</h1>
+    <button @click="Gotomenu" class="btn btn-success btn-block">去点餐</button>
   </div>
 </template>
 <script>
