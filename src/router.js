@@ -24,25 +24,38 @@ export default new Router({
     },
     {
       path: '/about',
-      name: 'about',  
+      name: 'about',
+      redirect:'/Contact',
       component: () => import('./components/About.vue'),children:[
         {
-          path:'./components/about/Contact.vue',
+          path:'/Contact',
           name:'contact',
-          component:() =>import('./components/about/Contact.vue')
+          redirect:'/phone',
+          component:() =>import('./components/about/Contact.vue'),children:[
+            {
+              path:'/phone',
+              name:'phone',
+              component:()=>import('./components/about/msg/phone.vue')
+            },
+            {
+              path:'/userName',
+              name:'userName',
+              component:()=>import('./components/about/msg/userName.vue')
+            },
+          ]
         },
         {
-          path:'./components/about/Delivery.vue',
+          path:'/Delivery',
           name:'delivery',
           component:() =>import('./components/about/Delivery.vue')
         },
         {
-          path:'./components/about/History.vue',
+          path:'/History',
           name:'history',
           component:() =>import('./components/about/History.vue')
         },
         {
-          path:'./components/about/OderingGuide.vue',
+          path:'/OderingGuide',
           name:'oderingGuide',
           component:() =>import('./components/about/OderingGuide.vue')
         },
@@ -58,5 +71,9 @@ export default new Router({
       name: 'register',  
       component: () => import( './components/Register.vue')
     },
+    {
+      path:'*',
+      redirect:'/'
+    }
   ]
 })
