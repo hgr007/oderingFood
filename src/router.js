@@ -105,5 +105,15 @@ export default new Router({
       path: '*',
       redirect: '/'
     }
-  ]
+  ],
+scrollBehavior (to, from, savedPosition) {
+  // ...
+  // return {x:0,y:100}  //显示的位置
+  // return {selector:'.btn'}  //当位置够的时候 显示第一个按钮的位置
+  if (savedPosition) {
+    return savedPosition;
+  }else{
+    return {x:0,y:0}
+  }
+}
 })

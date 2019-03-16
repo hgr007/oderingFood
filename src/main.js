@@ -13,6 +13,7 @@ new Vue({
 }).$mount('#app')
 
 
+
 //全局守卫  跳转
 // router.beforeEach((to, from, next) => {
 //   // to and from are both route objects. must call `next`.
