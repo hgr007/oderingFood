@@ -1,16 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './components/Home.vue'
+import History from './components/about/History'
+import Delivery from './components/about/Delivery'
+import OderingGuide from './components/about/OderingGuide'
 
 
 Vue.use(Router)
+
+
 
 export default new Router({
   routes: [
     {
       path: '/',
       name: 'home',
-      component: Home
+      components:{
+         default:Home,
+         'history':History,
+         'delivery':Delivery,
+         'oderingGuide':OderingGuide
+
+        }
     },
     {
       path: '/menu',
@@ -22,15 +33,17 @@ export default new Router({
       name: 'admin',
       component: () => import('./components/Admin.vue')
     },
+    // 二级路由
     {
       path: '/about',
       name: 'about',
-      redirect: '/Contact',
+      redirect: '/Contact',//默认显示联系我们
       component: () => import('./components/About.vue'), children: [
         {
+          //三级路由  
           path: '/Contact',
           name: 'contact',
-          redirect: '/phone',
+          redirect: '/phone',//默认显示电话
           component: () => import('./components/about/Contact.vue'), children: [
             {
               path: '/phone',
@@ -71,6 +84,7 @@ export default new Router({
       name: 'register',
       component: () => import('./components/Register.vue')
     },
+    //在地址错误的情况下跳转到/也就是home
     {
       path: '*',
       redirect: '/'
