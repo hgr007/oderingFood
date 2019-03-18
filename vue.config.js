@@ -1,4 +1,4 @@
-module.exprots = {
+module.exports = {
     baseUrl: '',            //配置根路径
     outputDir: '',           //构建输出目录
     assetDir: '',          //静态资源目录（js,css,img,fonts）
