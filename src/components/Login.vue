@@ -39,7 +39,7 @@ export default {
         .then(res => {
           const data = res.data;
           const users = [];
-          for(let key in data) {
+          for (let key in data) {
             const user = data[key];
             users.push(user);
           }
@@ -47,12 +47,12 @@ export default {
             return user.email == this.email && user.password == this.password;
           });
           // console.log(reslut)
-          if (reslut != null && reslut.length > 0) {  //判断返回回来的长度 是否大于零
-            this.$router.push({name:'home'})
-          }
-          else{
-            alert("还没有注册！！去注册")
-            this.$router.push({name:'register'})
+          if (reslut != null && reslut.length > 0) {
+            //判断返回回来的长度 是否大于零
+            this.$router.push({ name: "home" });
+          } else {
+            alert("还没有注册！！去注册");
+            this.$router.push({ name: "register" });
           }
         });
     }
