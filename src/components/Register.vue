@@ -16,7 +16,7 @@
               </div>
               <div class="form-group">
                 <label for="confirmPassword">确认密码</label>
-                <input type="confirmPassword" class="form-control" v-model="confirmPassword">
+                <input type="password" class="form-control" v-model="confirmPassword">
               </div>
               <button class="btn btn-block btn-success">注册</button>
             </form>
@@ -27,6 +27,7 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -36,7 +37,22 @@ export default {
     };
   },
   methods: {
-    Onsubmit() {}
+    Onsubmit() {
+      if (this.password == this.confirmPassword) {
+          const formData = {
+            email:this.email,
+            password:this.password,
+            confirmPassword:this.confirmPassword
+          }
+          // axios.post('/user.json',formData)
+          // .then(res=>{ 
+          //   console.log(res)
+          // })
+      }
+      else{
+        alert("两次密码不一致！")
+      }
+    }
   }
 };
 </script>
