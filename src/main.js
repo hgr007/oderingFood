@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 
-axios.defaults.baseURL('https://wd5254752724ripdnh.wilddogio.com/');
+axios.defaults.baseURL =' https://wd5254752724ripdnh.wilddogio.com/'
 
 Vue.config.productionTip = false
 

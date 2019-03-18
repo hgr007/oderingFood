@@ -39,18 +39,16 @@ export default {
   methods: {
     Onsubmit() {
       if (this.password == this.confirmPassword) {
-          const formData = {
-            email:this.email,
-            password:this.password,
-            confirmPassword:this.confirmPassword
-          }
-          // axios.post('/user.json',formData)
-          // .then(res=>{ 
-          //   console.log(res)
-          // })
-      }
-      else{
-        alert("两次密码不一致！")
+        const formData = {
+          email: this.email,
+          password: this.password,
+          confirmPassword: this.confirmPassword
+        };
+        axios.post("/user.json", formData).then(res => {
+          this.$router.push({name:'login'})
+        });
+      } else {
+        alert("两次密码不一致！");
       }
     }
   }
