@@ -1,9 +1,8 @@
 <template>
   <div id="app">
-    <appHeader></appHeader>
-
     <!-- //组件的复用 -->
     <div class="container">
+    <appHeader></appHeader>
       <div class="row">
         <div class="col-sm-12 col-md-4">
           <router-view name="oderingGuide"></router-view>
