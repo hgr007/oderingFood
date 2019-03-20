@@ -33,10 +33,10 @@ export default new Router({
       name: 'admin',
       component: () => import('./components/Admin.vue'),
       // beforeEnter: (to, from, next) => {
-        // ...路由独享守卫 在进入之前提示
-        // alert("没有登陆！！")
-        // next(false); 不登录
-        //判断store.gettes.isLogin === false
+      // ...路由独享守卫 在进入之前提示
+      // alert("没有登陆！！")
+      // next(false); 不登录
+      //判断store.gettes.isLogin === false
 
 
       //   if (to.path == '/login' || to.path == '/register') {
@@ -106,14 +106,14 @@ export default new Router({
       redirect: '/'
     }
   ],
-scrollBehavior (to, from, savedPosition) {
-  // ...
-  // return {x:0,y:100}  //显示的位置
-  // return {selector:'.btn'}  //当位置够的时候 显示第一个按钮的位置
-  if (savedPosition) {
-    return savedPosition;
-  }else{
-    return {x:0,y:0}
+  scrollBehavior(to, from, savedPosition) {
+    // ...
+    // return {x:0,y:100}  //显示的位置
+    // return {selector:'.btn'}  //当位置够的时候 显示第一个按钮的位置
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { x: 0, y: 0 }
+    }
   }
-}
 })

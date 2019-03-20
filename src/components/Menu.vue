@@ -117,7 +117,7 @@ export default {
       let totalCOnst = 0;
       for (const index in this.baskets) {
         let myItem = this.baskets[index];
-        totalCOnst += myItem.price*myItem.quantity;
+        totalCOnst += myItem.price * myItem.quantity;
       }
       return totalCOnst;
     }
