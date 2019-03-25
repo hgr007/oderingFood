@@ -65,51 +65,9 @@ export default {
   data() {
     return {
       baskets: [],
-      basketsText: "购物车没用东西",
-      getMenuItems: {
-        1: {
-          name: "榴莲pizza",
-          description: "这是喜欢吃榴莲朋友的最佳选择",
-          options: [
-            {
-              size: 9,
-              price: 38
-            },
-            {
-              size: 12,
-              price: 48
-            }
-          ]
-        },
-        2: {
-          name: "芝士pizza",
-          description: "芝士杀手,浓浓的芝士丝, 食欲瞬间爆棚",
-          options: [
-            {
-              size: 9,
-              price: 38
-            },
-            {
-              size: 12,
-              price: 48
-            }
-          ]
-        },
-        3: {
-          name: "夏威夷pizza",
-          description: "众多人的默认选择",
-          options: [
-            {
-              size: 9,
-              price: 36
-            },
-            {
-              size: 12,
-              price: 46
-            }
-          ]
-        }
-      }
+      basketsText: "购物车没用东西"
+      // getMenuItems: {
+      // }
     };
   },
   computed: {
@@ -122,7 +80,15 @@ export default {
       return totalCOnst;
     }
   },
+  created() {
+    this.fetchData();
+  },
   methods: {
+    fetchData() {
+      this.http
+        .get("menu.json")
+        .then(res => this.$store.commit("setMemuItems", res.data));
+    },
     addToBasket(item, option) {
       let basket = {
         name: item.name,

@@ -5,7 +5,7 @@ import store from './store'
 import axios from 'axios'
 
 axios.defaults.baseURL =' https://wd5254752724ripdnh.wilddogio.com/'
-
+Vue.prototype.http = axios
 Vue.config.productionTip = false
 
 
