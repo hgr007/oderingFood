@@ -66,10 +66,13 @@ export default {
     return {
       baskets: [],
       basketsText: "购物车没有东西",
-      getMenuItems: {}
     };
   },
   computed: {
+    getMenuItems(){
+      //在vuex中 拿到数据
+     return this.$store.state.menuItems
+    },
     total() {
       let totalCOnst = 0;
       for (const index in this.baskets) {
@@ -84,11 +87,14 @@ export default {
   },
   methods: {
     fetchData() {
-      this.http.get("menu.json").then(res => {
-        // console.log(res)
-        this.getMenuItems = res.data;
-      });
-      // .then(res => this.$store.commit("setMemuItems", res.data));
+      this.http.get("menu.json")
+      // .then(res => {
+      //   // console.log(res)
+      //   this.getMenuItems = res.data;
+      // });
+      
+      //将请求下来的东西存到vuex里面
+      .then(res => this.$store.commit("setMemuItems", res.data));
     },
 
     addToBasket(item, option) {

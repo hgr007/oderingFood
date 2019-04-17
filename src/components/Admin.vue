@@ -1,20 +1,20 @@
 <template>
   <div class="row">
     <div class="col-sm-12 col-md-8">
-      <!-- AdminItems -->
-      <Items></Items>
+      <!-- new pizza -->
+      <adminNewItems></adminNewItems>
     </div>
     <div class="col-sm-12 col-md-4">
-      <!-- 菜单展示 -->
+      <!-- 品种展示 -->
       <h3 class="text-muted my-5">菜单</h3>
       <table class="table">
-        <thead class="table default-table">
+        <thead class="table table-default">
           <tr>
             <th>品种</th>
             <th>删除</th>
           </tr>
         </thead>
-        <tbody v-for="item in GetItems" :key="item.name">
+        <tbody v-for="item in getMenuItems" :key="item.name">
           <tr>
             <td>{{item.name}}</td>
             <td>
@@ -26,32 +26,47 @@
     </div>
   </div>
 </template>
+
 <script>
-import AdminItems from "./AdminItems";
+import adminNewItems from "./adminNewItems.vue";
 export default {
-  name: "admin",
   data() {
     return {
-      GetItems: []
+      // getMenuItems:[]
     };
   },
   components: {
-    Items: AdminItems
+    adminNewItems
+  },
+  computed: {
+    getMenuItems: {
+      // 在vuex中获取数据
+      get() {
+        return this.$store.state.menuItems
+        // 通过getters获取数据
+        // return this.$store.getters.getMenuItems;
+      },
+      set() {}
+    }
   },
   created() {
     fetch("https://wd5254752724ripdnh.wilddogio.com/menu.json")
       .then(res => {
+        // console.log(res)
         return res.json();
       })
       .then(data => {
+        // console.log(data)
         let menuArray = [];
-        for (const key in data) {
+        for (let key in data) {
           // console.log(key)
           // console.log(data[key])
           data[key].id = key;
           menuArray.push(data[key]);
         }
-        this.GetItems = menuArray;
+        // 数据同步
+        this.$store.commit("setMenuItems", menuArray);
+        // this.getMenuItems = menuArray
       });
   },
   methods: {
@@ -66,24 +81,14 @@ export default {
         }
       )
         .then(res => res.json())
-        //  .then(data => console.log(data))
-        .then(data => this.$router.push({ name: "menu" }));
+        // .then(data => this.$router.push({name:"menuLink"}))
+        .then(data => {
+          this.$store.commit("removeMenuItems", item);
+        })
+        .catch(err => console.log(err));
     }
-  },
-  //   beforeRouteEnter (to, from, next) {
-  //     //  console.log("你好"+this.name) 页面渲染之前拿不到name的值
-  //       next( vm =>{
-  //           alert("hello"+vm.name)
-  //       });
-  //   }
-
-  // beforeRouteLeave(to, from, next) {
-  //   // ...
-  //   if (confirm("确认离开吗？") === true) {
-  //     next();
-  //   } else {
-  //     next(false);
-  //   }
-  // }
+  }
 };
 </script>
+
+
