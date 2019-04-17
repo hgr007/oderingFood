@@ -67,7 +67,7 @@ export default {
       )
         .then(res => res.json())
         //  .then(data => console.log(data))
-        .then(data => this.$router.push({ name: "menuLink" }));
+        .then(data => this.$router.push({ name: "menu" }));
     }
   },
   //   beforeRouteEnter (to, from, next) {
@@ -77,13 +77,13 @@ export default {
   //       });
   //   }
 
-  beforeRouteLeave(to, from, next) {
-    // ...
-    if (confirm("确认离开吗？") === true) {
-      next();
-    } else {
-      next(false);
-    }
-  }
+  // beforeRouteLeave(to, from, next) {
+  //   // ...
+  //   if (confirm("确认离开吗？") === true) {
+  //     next();
+  //   } else {
+  //     next(false);
+  //   }
+  // }
 };
 </script>

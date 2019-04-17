@@ -10,7 +10,7 @@
             <th>加入购物车</th>
           </tr>
         </thead>
-        <tbody v-for="item in getMenuItems" :key="item.name">
+        <tbody v-for="(item, index) in getMenuItems" :key="index">
           <tr>
             <td>
               <strong>{{item.name}}</strong>
@@ -38,15 +38,15 @@
               <th>价格</th>
             </tr>
           </thead>
-          <tbody v-for="item in baskets" :key="item.name">
+          <tbody v-for="basket in baskets" :key="basket.name">
             <tr>
               <td>
-                <button class="btn btn-sm" @click="decreate(item)">-</button>
-                <span>{{item.quantity}}</span>
-                <button class="btn btn-sm" @click="increate(item)">+</button>
+                <button class="btn btn-sm" @click="decreate(basket)">-</button>
+                <span>{{basket.quantity}}</span>
+                <button class="btn btn-sm" @click="increate(basket)">+</button>
               </td>
-              <td>{{item.name}}{{item.size}}</td>
-              <td>{{item.price*item.quantity}}</td>
+              <td>{{basket.name}}&nbsp;{{basket.size}}</td>
+              <td>{{basket.price*basket.quantity}}</td>
             </tr>
           </tbody>
         </table>
@@ -61,13 +61,12 @@
 </template>
 <script>
 export default {
-  name: "menu",
+  name: "Menus",
   data() {
     return {
       baskets: [],
-      basketsText: "购物车没用东西"
-      // getMenuItems: {
-      // }
+      basketsText: "购物车没有东西",
+      getMenuItems: {}
     };
   },
   computed: {
@@ -85,10 +84,13 @@ export default {
   },
   methods: {
     fetchData() {
-      this.http
-        .get("menu.json")
-        .then(res => this.$store.commit("setMemuItems", res.data));
+      this.http.get("menu.json").then(res => {
+        // console.log(res)
+        this.getMenuItems = res.data;
+      });
+      // .then(res => this.$store.commit("setMemuItems", res.data));
     },
+
     addToBasket(item, option) {
       let basket = {
         name: item.name,

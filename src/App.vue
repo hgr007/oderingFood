@@ -2,7 +2,7 @@
   <div id="app">
     <!-- //组件的复用 -->
     <div class="container">
-    <appHeader></appHeader>
+    <appheader></appheader>
       <div class="row">
         <div class="col-sm-12 col-md-4">
           <router-view name="oderingGuide"></router-view>
@@ -18,11 +18,11 @@
   </div>
 </template>
 <script>
-import Header from "./views/Header";
+import appheader from "./views/appheader";
 export default {
   name: "app",
   components: {
-    appHeader: Header
+    appheader
   }
 };
 </script>

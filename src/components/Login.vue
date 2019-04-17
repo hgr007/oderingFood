@@ -35,7 +35,7 @@ export default {
   methods: {
     Onsubmit() {
       axios
-        .get("users.json") //拿到数据
+        .get("user.json") //拿到数据
         .then(res => {
           const data = res.data;
           const users = [];

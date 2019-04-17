@@ -23,7 +23,7 @@
           <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
         </svg>
       </a>
-      <a href="#" class="navbar navbar-brand">pizza点餐系统</a>
+      <a href="#" class="navbar navbar-brand">点餐系统</a>
       <ul class="navbar-nav">
         <router-link tag="a" to="/" class="nav-link">主页</router-link>
         <router-link tag="a" to="/menu" class="nav-link">菜单</router-link>
@@ -40,6 +40,7 @@
 </template>
 <script>
 export default {
-  name: "header"
-};
+  name:'appheader'
+}
 </script>
+

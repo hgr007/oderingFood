@@ -2,13 +2,13 @@
   <form>
     <h3>添加新的物件</h3>
     <div class="form-group row">
-      <lable class="col-sm-1">品种</lable>
+      <label class="col-sm-1">品种</label>
       <div class="col-sm-11">
         <input type="text" class="form-control" v-model="Item.name">
       </div>
     </div>
     <div class="form-group row">
-      <lable class="col-sm-1">描述</lable>
+      <label class="col-sm-1">描述</label>
       <div class="col-sm-11">
         <textarea class="form-control" v-model="Item.description" rows="5"></textarea>
       </div>
@@ -50,7 +50,7 @@
 </template>
 <script>
 export default {
-  name: "Items",
+  name: "items",
   data() {
     return {
       Item: {}
@@ -73,6 +73,9 @@ export default {
           }
         ]
       };
+      //  http.post("/user.json", formData).then(res=>{
+      //    console.log(res)
+      //  })
       this.http
         .post("menu.json", data)
         .then(res => this.$router.push({ name: "menu" }));
