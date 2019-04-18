@@ -94,7 +94,7 @@ export default {
       // });
       
       //将请求下来的东西存到vuex里面
-      .then(res => this.$store.commit("setMemuItems", res.data));
+      .then(res => this.$store.commit("setMenuItems", res.data));
     },
 
     addToBasket(item, option) {
