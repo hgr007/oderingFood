@@ -49,10 +49,12 @@ export default {
   computed: {
     currentUser() {
       return this.$store.getters.currentUser;
+      // console.log(currentUser)
     },
-    isLogin() {
-      return this.$store.getters.isLogin;
-    }
+     isLogin(){
+        return this.$store.getters.isLogin
+         console.log(isLogin)
+      }
   }
 };
 </script>

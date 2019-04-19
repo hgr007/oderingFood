@@ -71,9 +71,10 @@ export default {
   computed: {
     getMenuItems(){
       //在vuex中 拿到数据
-     return this.$store.state.menuItems
+    //  return this.$store.state.menuItems
 
-      return this.$store.getters.getMenuItems
+    //使用getters拿数据
+    return this.$store.getters.getMenuItems
     },
     total() {
       let totalCOnst = 0;
