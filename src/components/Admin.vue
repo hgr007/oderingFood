@@ -42,9 +42,9 @@ export default {
     getMenuItems: {
       // 在vuex中获取数据
       get() {
-        return this.$store.state.menuItems
+        // return this.$store.state.menuItems
         // 通过getters获取数据
-        // return this.$store.getters.getMenuItems;
+        return this.$store.getters.getMenuItems;
       },
       set() {}
     }

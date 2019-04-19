@@ -31,8 +31,13 @@
         <router-link to="/about" class="nav-link" tag="a">关于我们</router-link>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <router-link to="/login" class="nav-link" tag="a">登陆</router-link>
-        <router-link to="register" class="nav-link" tag="a">注册</router-link>
+        <router-link to="/login" v-show="!isLogin" class="nav-link" tag="a">登陆</router-link>
+
+      <li class="nav-link">{{currentUser}}</li>
+      <router-link to="/login" v-show="isLogin" class="nav-link" tag="a">[退出]</router-link>
+
+
+        <router-link to="register" v-show="!isLogin" class="nav-link" tag="a">注册</router-link>
       </ul>
     </Header>
     <router-view></router-view>
@@ -40,7 +45,15 @@
 </template>
 <script>
 export default {
-  name:'appheader'
-}
+  name: "appheader",
+  computed: {
+    currentUser() {
+      return this.$store.getters.currentUser;
+    },
+    isLogin() {
+      return this.$store.getters.isLogin;
+    }
+  }
+};
 </script>
 
