@@ -32,6 +32,10 @@ export default {
       confirmPassword: ""
     };
   },
+  beforeRouteEnter (to, from, next) {
+    // ...
+     next(vm => vm.$store.dispatch("setUser",null))
+  },
   methods: {
     Onsubmit() {
       axios
@@ -50,7 +54,7 @@ export default {
           if (reslut != null && reslut.length > 0) {
             this.$store.dispatch("setUser", reslut[0].email);
             //判断返回回来的长度 是否大于零
-            console.log(reslut[0].email)
+            console.log(reslut[0].email);
             this.$router.push({ name: "home" });
           } else {
             alert("还没有注册！！去注册");

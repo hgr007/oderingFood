@@ -35,6 +35,7 @@ export default new Vuex.Store({
     pushToMenuItems(state, data) {
       state.menuItems.push(data);
     },
+    
     userStatus(state, user) {
       //更改用户的状态信息
       if (user) {
