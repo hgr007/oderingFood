@@ -58,7 +58,7 @@ export default {
             this.$router.push({ name: "home" });
           } else {
             alert("还没有注册！！去注册");
-            // this.$router.push({ name: "register" });
+            this.$router.push({ name: "register" });
             this.$store.dispatch("setUser", null);
           }
         });
