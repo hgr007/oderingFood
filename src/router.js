@@ -34,8 +34,8 @@ export default new Router({
       component: () => import('./components/Admin.vue'),
       beforeEnter: (to, from, next) => {
         // ...路由独享守卫 在进入之前提示
-        alert("你丫的不是管理员 无法访问此页面")
-        next(false);
+        // alert("你丫的不是管理员 无法访问此页面")
+        next();
 
         
         // 判断store.gettes.isLogin === false
@@ -101,6 +101,11 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: () => import('./components/Register.vue')
+    },
+    {
+      path: '/pay',
+      name: 'pay',
+      component: () => import('./components/pay.vue')
     },
     //在地址错误的情况下跳转到/也就是home
     {

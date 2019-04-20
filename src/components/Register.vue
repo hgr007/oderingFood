@@ -45,7 +45,8 @@ export default {
           confirmPassword: this.confirmPassword
         };
         axios.post("/user.json", formData).then(res => {
-          this.$router.push({name:'login'})
+          alert("注册成功,去登陆吧");
+          this.$router.push({ name: "login" });
         });
       } else {
         alert("两次密码不一致！");

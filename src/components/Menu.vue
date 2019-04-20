@@ -42,7 +42,9 @@
             <tr>
               <td>
                 <button class="btn btn-sm" @click="decreate(basket)">-</button>
+                &nbsp;
                 <span>{{basket.quantity}}</span>
+                &nbsp;
                 <button class="btn btn-sm" @click="increate(basket)">+</button>
               </td>
               <td>{{basket.name}}&nbsp;{{basket.size}}</td>
@@ -51,7 +53,7 @@
           </tbody>
         </table>
         <P>总价为：{{total + "RMB"}}</P>
-        <button class="btn btn-success btn-block">去结算</button>
+        <button @click="Pay" class="btn btn-success btn-block">去结算</button>
       </div>
       <div v-else>
         <h3>{{basketsText}}</h3>
@@ -65,16 +67,16 @@ export default {
   data() {
     return {
       baskets: [],
-      basketsText: "购物车没有东西",
+      basketsText: "购物车没有东西"
     };
   },
   computed: {
-    getMenuItems(){
+    getMenuItems() {
       //在vuex中 拿到数据
-    //  return this.$store.state.menuItems
+      //  return this.$store.state.menuItems
 
-    //使用getters拿数据
-    return this.$store.getters.getMenuItems
+      //使用getters拿数据
+      return this.$store.getters.getMenuItems;
     },
     total() {
       let totalCOnst = 0;
@@ -89,15 +91,20 @@ export default {
     this.fetchData();
   },
   methods: {
+    Pay(){
+     alert("去支付")
+     this.$router.push({name:"pay"});
+    },
     fetchData() {
-      this.http.get("menu.json")
-      // .then(res => {
-      //   // console.log(res)
-      //   this.getMenuItems = res.data;
-      // });
-      
-      //将请求下来的东西存到vuex里面
-      .then(res => this.$store.commit("setMenuItems", res.data));
+      this.http
+        .get("menu.json")
+        // .then(res => {
+        //   // console.log(res)
+        //   this.getMenuItems = res.data;
+        // });
+
+        //将请求下来的东西存到vuex里面
+        .then(res => this.$store.commit("setMenuItems", res.data));
     },
 
     addToBasket(item, option) {
