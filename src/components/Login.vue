@@ -55,6 +55,7 @@ export default {
             this.$store.dispatch("setUser", reslut[0].email);
             //判断返回回来的长度 是否大于零
             console.log(reslut[0].email);
+            alert("登陆成功!!")
             this.$router.push({ name: "home" });
           } else {
             alert("还没有注册！！去注册");

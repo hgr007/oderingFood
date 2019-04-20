@@ -91,9 +91,10 @@ export default {
     this.fetchData();
   },
   methods: {
-    Pay(){
-     alert("去支付")
-     this.$router.push({name:"pay"});
+    Pay() {
+      if (confirm("一共消费" + this.total + "RMB," + "确认去支付么")) {
+        this.$router.push({ name: "pay" });
+      }
     },
     fetchData() {
       this.http
