@@ -36,6 +36,8 @@ export default new Router({
         // ...路由独享守卫 在进入之前提示
         alert("你丫的不是管理员 无法访问此页面")
         next(false);
+
+        
         // 判断store.gettes.isLogin === false
 
 
@@ -59,7 +61,7 @@ export default new Router({
           //三级路由  
           path: '/Contact',
           name: 'contact',
-          redirect: '/phone',//默认显示电话
+          redirect: '/userName',//默认显示店主
           component: () => import('./components/about/Contact.vue'), children: [
             {
               path: '/phone',
