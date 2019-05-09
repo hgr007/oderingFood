@@ -34,10 +34,10 @@ export default new Router({
       component: () => import('./components/Admin.vue'),
       beforeEnter: (to, from, next) => {
         // ...路由独享守卫 在进入之前提示
-        // alert("你丫的不是管理员 无法访问此页面")
-        next();
+        alert("你丫的不是管理员 无法访问此页面")
+        next(false);
 
-        
+
         // 判断store.gettes.isLogin === false
 
 

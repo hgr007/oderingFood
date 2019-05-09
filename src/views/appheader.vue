@@ -2,18 +2,7 @@
   <div>
     <Header class="navbar navbar-expand-lg navbar-light bg-light">
       <a href="#">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="d-block mx-auto"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto">
           <circle cx="12" cy="12" r="10"></circle>
           <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
           <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
@@ -33,9 +22,8 @@
       <ul class="navbar-nav ml-auto">
         <router-link to="/login" v-show="!isLogin" class="nav-link" tag="a">登陆</router-link>
 
-      <li class="nav-link">{{currentUser}}</li>
-      <router-link to="/login" v-show="isLogin" class="nav-link" tag="a">[退出]</router-link>
-
+        <li class="nav-link">{{currentUser}}</li>
+        <router-link to="/login" v-show="isLogin" class="nav-link" tag="a">[退出]</router-link>
 
         <router-link to="register" v-show="!isLogin" class="nav-link" tag="a">注册</router-link>
       </ul>
@@ -45,17 +33,17 @@
 </template>
 <script>
 export default {
-  name: "appheader",
+  name: 'appheader',
   computed: {
     currentUser() {
-      return this.$store.getters.currentUser;
       // console.log(currentUser)
+      return this.$store.getters.currentUser
     },
-     isLogin(){
-        return this.$store.getters.isLogin
-         console.log(isLogin)
-      }
+    isLogin() {
+      //  console.log(isLogin)
+      return this.$store.getters.isLogin
+    }
   }
-};
+}
 </script>
 
