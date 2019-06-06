@@ -63,12 +63,12 @@
 </template>
 <script>
 export default {
-  name: "Menus",
+  name: 'Menus',
   data() {
     return {
       baskets: [],
-      basketsText: "购物车没有东西"
-    };
+      basketsText: '购物车没有东西'
+    }
   },
   computed: {
     getMenuItems() {
@@ -76,36 +76,36 @@ export default {
       //  return this.$store.state.menuItems
 
       //使用getters拿数据
-      return this.$store.getters.getMenuItems;
+      return this.$store.getters.getMenuItems
     },
     total() {
-      let totalCOnst = 0;
+      let totalCOnst = 0
       for (const index in this.baskets) {
-        let myItem = this.baskets[index];
-        totalCOnst += myItem.price * myItem.quantity;
+        let myItem = this.baskets[index]
+        totalCOnst += myItem.price * myItem.quantity
       }
-      return totalCOnst;
+      return totalCOnst
     }
   },
   created() {
-    this.fetchData();
+    this.fetchData()
   },
   methods: {
     Pay() {
-      if (confirm("一共消费" + this.total + "RMB," + "确认去支付么")) {
-        this.$router.push({ name: "pay" });
+      if (confirm('一共消费' + this.total + 'RMB,' + '确认去支付么')) {
+        this.$router.push({ name: 'pay' })
       }
     },
     fetchData() {
       this.http
-        .get("menu.json")
+        .get('menu.json')
         // .then(res => {
         //   // console.log(res)
         //   this.getMenuItems = res.data;
         // });
 
         //将请求下来的东西存到vuex里面
-        .then(res => this.$store.commit("setMenuItems", res.data));
+        .then(res => this.$store.commit('setMenuItems', res.data))
     },
 
     addToBasket(item, option) {
@@ -114,37 +114,37 @@ export default {
         price: option.price,
         size: option.size,
         quantity: 1
-      };
+      }
       if (this.baskets.length > 0) {
         //表示购物车里面里面有东西 需要实现过滤
 
         let reslut = this.baskets.filter(basket => {
           //注意 this的指向问题
-          return basket.name === item.name && basket.price === option.price;
-        });
+          return basket.name === item.name && basket.price === option.price
+        })
 
         if (reslut != null && reslut.length > 0) {
-          reslut[0].quantity++;
+          reslut[0].quantity++
         } else {
-          this.baskets.push(basket);
+          this.baskets.push(basket)
         }
       } else {
-        this.baskets.push(basket);
+        this.baskets.push(basket)
       }
     },
     decreate(item) {
-      item.quantity--;
+      item.quantity--
       if (item.quantity <= 0) {
-        this.removeBasket(item);
+        this.removeBasket(item)
       }
     },
     increate(item) {
-      item.quantity++;
+      item.quantity++
     },
     removeBasket(item) {
       //当商品的数量没有的时候 把这个购物车移走
-      this.baskets.splice(this.baskets.indexOf(item), 1);
+      this.baskets.splice(this.baskets.indexOf(item), 1)
     }
   }
-};
+}
 </script>
